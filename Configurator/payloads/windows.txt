@@ -1,0 +1,11 @@
+gui r
+run
+enter
+powershell
+ctrl + alt + enter (pour admin)
+aller sur oui (fleche gauche ou 2 fois tab)
+enter
+cd E:\WinPMem\
+enter
+.\winpmem_mini_x64_rc2.exe <outpout>
+enter

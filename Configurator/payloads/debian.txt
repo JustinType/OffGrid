@@ -1,0 +1,32 @@
+DELAY 15000
+GUI SPACE
+DELAY 1000
+ALT F2
+DELAY 1000
+STRING gnome-terminal
+DELAY 1000
+ENTER
+DELAY 1000
+GUI SPACE
+DELAY 2000
+STRING cp `find /media -name avml` .
+DELAY 1000
+ENTER
+DELAY 5000
+STRING sudo chmod 755 avml
+DELAY 1000
+ENTER
+DELAY 2000
+STRING debian
+DELAY 1000
+ENTER
+DELAY 2000
+STRING sudo ./avml --compress `find /media -type d -name avml_result`/memory.raw
+DELAY 1000
+ENTER
+DELAY 5000
+STRING Wait for this command to be fully finished, then you can unplug the 2 USB keys
+DELAY 1000
+ENTER
+DELAY 1000
+GUI SPACE
