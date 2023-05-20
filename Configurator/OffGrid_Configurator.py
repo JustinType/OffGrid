@@ -1,6 +1,6 @@
 import tkinter
 import customtkinter
-import os
+import os, shutil
 from datetime import datetime
 
 customtkinter.set_appearance_mode("Dark")  # Modes: "System" (standard), "Dark", "Light"
@@ -12,29 +12,58 @@ class App(customtkinter.CTk):
         super().__init__()
 
         # Commands
-        def add_path():
+        def add_path_bash_bunny():
             try:
                 currdir = os.getcwd()
                 path = tkinter.filedialog.askdirectory(initialdir=currdir, title='Please select Bash Bunny root folder')
-                self.pathEntry.delete("0", "end")
-                self.pathEntry.insert("0", path)
+                self.pathEntryBashBunny.delete("0", "end")
+                self.pathEntryBashBunny.insert("0", path)     
+            except Exception as e:
+                self.logs_textbox.insert("0.0", datetime.now().strftime('%H:%M:%S') + " - Error: "+str(e)+"\n")
+
+        def add_path_usb():
+            try:
+                currdir = os.getcwd()
+                path = tkinter.filedialog.askdirectory(initialdir=currdir, title='Please select USB exfiltration key root folder')
+                self.pathEntryUSB.delete("0", "end")
+                self.pathEntryUSB.insert("0", path)
             except Exception as e:
                 self.logs_textbox.insert("0.0", datetime.now().strftime('%H:%M:%S') + " - Error: "+str(e)+"\n")
 
 
         def configure_bash_bunny():
             try:
-                pathBashBunny = self.pathEntry.get()
+                # Get entries
+                pathBashBunny = self.pathEntryBashBunny.get()
+                pathUSB = self.pathEntryUSB.get()
                 switch = int(self.radio_var.get())
-                if switch == 1:
-                    print("Switch 1")
-                    # TODO
-                if switch == 2:
-                    print("Switch 2")
-                    # TODO
                 action = self.action_menu.get()
-                os = self.os_menu.get()
-                self.logs_textbox.insert("0.0", datetime.now().strftime('%H:%M:%S') + " - Configuration loaded in: "+pathBashBunny+" | Switch: "+str(switch)+" | Action: "+action+" | OS: "+os+"\n")
+                os = self.os_menu.get()  
+                password = self.adminPassword.get()
+                pathSwitch = pathBashBunny+"payloads/switch"+str(switch)   
+                print(pathSwitch)  
+
+                # Delete all files and folders in the switch folder (doesn't work)
+                """
+                for root, dirs, files in os.walk(pathSwitch):
+                    for f in files:
+                        os.unlink(os.path.join(root, f))
+                    for d in dirs:
+                        shutil.rmtree(os.path.join(root, d))
+                """
+
+                # Copy files for the good action and OS
+                if action == "RAM Dump":
+                    if os == "Windows":
+                        print("TODO")
+                    if os == "Debian":
+                        print("TODO")
+                    if os == "Ubuntu":
+                        print("TODO")
+                elif action == "Other action":
+                    print("TODO")
+
+                self.logs_textbox.insert("0.0", "**********\n" + datetime.now().strftime('%H:%M:%S') + " --- Configuration loaded: \n- Path to Bash Bunny: "+pathBashBunny+"\n- Path to exfiltration key: "+pathUSB+"\n- Switch: "+str(switch)+"\n- Action: "+action+"\n- OS: "+os+"\n")
             except Exception as e:
                 self.logs_textbox.insert("0.0", datetime.now().strftime('%H:%M:%S') + " - Error: "+str(e)+"\n")
 
@@ -42,18 +71,27 @@ class App(customtkinter.CTk):
 
         # Window configuration
         self.title("OffGrid_Configurator.py")
-        self.geometry(f"{660}x{510}")
+        self.geometry(f"{660}x{610}")
         self.resizable(False, False)
 
         # First frame : Path to the Bash Bunny
         self.frame1 = customtkinter.CTkFrame(self)
         self.frame1.grid(row=0, column=0, sticky="nsew")
 
-        self.pathEntry = customtkinter.CTkEntry(self.frame1, placeholder_text="Path to Bash Bunny root folder", width=420)
-        self.pathEntry.grid(row=0, column=0, padx=(50, 0), pady=(20, 0), sticky="nsew")
+        self.pathEntryBashBunny = customtkinter.CTkEntry(self.frame1, placeholder_text="Path to Bash Bunny root folder", width=420)
+        self.pathEntryBashBunny.grid(row=0, column=0, padx=(50, 0), pady=(20, 0), sticky="nsew")
 
-        self.addPath = customtkinter.CTkButton(master=self.frame1, fg_color="transparent", border_width=2, text_color=("gray10", "#DCE4EE"), text="Add Path", command=add_path)
-        self.addPath.grid(row=0, column=1, padx=(20, 30), pady=(20, 0), sticky="nsew")
+        self.addPathBashBunny = customtkinter.CTkButton(master=self.frame1, fg_color="transparent", border_width=2, text_color=("gray10", "#DCE4EE"), text="Add Path", command=add_path_bash_bunny)
+        self.addPathBashBunny.grid(row=0, column=1, padx=(20, 30), pady=(20, 0), sticky="nsew")
+
+        self.pathEntryUSB = customtkinter.CTkEntry(self.frame1, placeholder_text="Path to USB exfiltration key root folder", width=420)
+        self.pathEntryUSB.grid(row=1, column=0, padx=(50, 0), pady=(20, 0), sticky="nsew")
+
+        self.addPathUSB = customtkinter.CTkButton(master=self.frame1, fg_color="transparent", border_width=2, text_color=("gray10", "#DCE4EE"), text="Add Path", command=add_path_usb)
+        self.addPathUSB.grid(row=1, column=1, padx=(20, 30), pady=(20, 0), sticky="nsew")
+
+        self.adminPassword = customtkinter.CTkEntry(master=self.frame1, placeholder_text="Enter admin password", show="\u25CF", width=300)
+        self.adminPassword.grid(row=2, column=0, pady=(20,0), padx=(100,0))
 
         # Second frame : Configuration for the Bash Bunny (switch / action / OS)
         self.frame2 = customtkinter.CTkFrame(self)
@@ -86,7 +124,7 @@ class App(customtkinter.CTk):
         # Last frame : Logs
         self.frame4 = customtkinter.CTkFrame(self)
         self.frame4.grid(row=4, column=0, sticky="nsew")
-        self.logs_textbox = customtkinter.CTkTextbox(self.frame4, width=550, height=150)
+        self.logs_textbox = customtkinter.CTkTextbox(self.frame4, width=560, height=150)
         self.logs_textbox.insert("0.0", "----- Here are your logs stored -----")
         self.logs_textbox.grid(row=4, column=0, padx=(50, 0), pady=(30, 30), sticky="nsew")
 
