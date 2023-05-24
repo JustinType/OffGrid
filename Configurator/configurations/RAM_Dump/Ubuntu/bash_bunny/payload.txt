@@ -1,0 +1,17 @@
+LED SETUP
+ATTACKMODE HID STORAGE
+
+# Check for switch position to make it easier for us.
+GET SWITCH_POSITION
+
+LED ATTACK
+
+# Load script for ubuntu
+if [ -f "/root/udisk/payloads/${SWITCH_POSITION}/ubuntu.txt" ]; then 
+	QUACK ${SWITCH_POSITION}/linux/ubuntu.txt
+	LED FINISH
+else
+    	LED FAIL
+    	echo "Unable to load ubuntu.txt" >> /root/udisk/payloads/${SWITCH_POSITION}/debuglog.txt
+        exit 1
+fi
