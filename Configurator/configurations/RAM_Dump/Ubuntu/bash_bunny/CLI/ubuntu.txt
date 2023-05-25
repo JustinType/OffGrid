@@ -1,0 +1,20 @@
+DELAY 15000
+STRING cp `find /media -name avml` .
+DELAY 1000
+ENTER
+DELAY 5000
+STRING sudo chmod 755 avml
+DELAY 1000
+ENTER
+DELAY 2000
+STRING debian
+DELAY 1000
+ENTER
+DELAY 2000
+STRING sudo ./avml --compress `find /media -type d -name result`/memory.raw
+DELAY 1000
+ENTER
+
+Tanguy :
+[password]
+[nameUSB]

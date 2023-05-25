@@ -26,3 +26,7 @@ DELAY 1000
 ENTER
 DELAY 5000
 GUI SPACE
+
+Tanguy :
+[password]
+[nameUSB]
