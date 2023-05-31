@@ -120,7 +120,7 @@ class App(customtkinter.CTk):
                     print("TODO")
 
                 # Insert configuration in logs
-                self.logs_textbox.insert("0.0", "**********\n" + datetime.now().strftime('%H:%M:%S') + " --- Configuration loaded: \n- Path to Bash Bunny: "+pathBashBunny+"\n- Path to exfiltration key: "+pathUSB+"\n- Action: "+action+"\n- Switch: "+str(switch)+"\n- Environment: "+text_environment+"\n- OS: "+osDevice+"\n- Path to files to save :"+pathFiles+"\n")
+                self.logs_textbox.insert("0.0", "**********\n" + datetime.now().strftime('%H:%M:%S') + " --- Configuration loaded: \n- Path to Bash Bunny: "+pathBashBunny+"\n- Path to exfiltration key: "+pathUSB+"\n- Action: "+action+"\n- Switch: "+str(switch)+"\n- Environment: "+text_environment+"\n- OS: "+osDevice+"\n- Path to files to save: "+pathFiles+"\n")
             except Exception as e:
                 # Insert error in logs
                 self.logs_textbox.insert("0.0", datetime.now().strftime('%H:%M:%S') + " - Error: "+str(e)+"\n")
