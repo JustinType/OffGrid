@@ -53,7 +53,7 @@ class App(customtkinter.CTk):
             except Exception as e:
                 self.logs_textbox.insert("0.0", datetime.now().strftime('%H:%M:%S') + " - Error: "+str(e)+"\n")
 
-        def replace_pass_and_name(pathSwitch, password, nameUSB):
+        def replace_pass_and_name(pathSwitch, password, nameUSB, pathFiles, pathUSB):
             try:
                 for filename in os.listdir(pathSwitch):
                     file_path = os.path.join(pathSwitch, filename)
@@ -66,6 +66,11 @@ class App(customtkinter.CTk):
                             line = line.replace("[password]", password)
                         if "[nameUSB]" in line:
                             line = line.replace("[nameUSB]", nameUSB)
+                        if pathFiles != "" and "REM PathFilesToSave" in line:
+                            line = line.replace("REM PathFilesToSave1", "DELAY 3000")
+                            line = line.replace("REM PathFilesToSave2", f"STRING cp -r {pathFiles} {pathUSB}/saved_files")
+                            line = line.replace("REM PathFilesToSave3", "DELAY 1000")
+                            line = line.replace("REM PathFilesToSave4", "ENTER")
                         newFile.write(line)
                     newFile.close()           
             except Exception as e:
@@ -80,6 +85,7 @@ class App(customtkinter.CTk):
                 action = self.tabview.get()
                 switch = int(self.radio_var.get())
                 environment = int(self.radio_environment_var.get())
+                pathFiles = self.pathFiles.get()
                 if environment == 1:
                     text_environment = "With GUI"
                 if environment == 2:
@@ -99,22 +105,22 @@ class App(customtkinter.CTk):
                         # Copy configuration and tools in the paths specified
                         pathConfigurationWindows = os.path.join(os.getcwd(), "configurations/Ram_Dump/Windows")
                         copy_configuration(pathConfigurationWindows, environment, pathSwitch, pathUSB)
-                        replace_pass_and_name(pathSwitch, password, nameUSB)
+                        replace_pass_and_name(pathSwitch, password, nameUSB, pathFiles, pathUSB)
                     if osDevice == "Debian":
                         # Copy configuration and tools in the paths specified
                         pathConfigurationDebian = os.path.join(os.getcwd(), "configurations/Ram_Dump/Debian")
                         copy_configuration(pathConfigurationDebian, environment, pathSwitch, pathUSB)
-                        replace_pass_and_name(pathSwitch, password, nameUSB)
+                        replace_pass_and_name(pathSwitch, password, nameUSB, pathFiles, pathUSB)
                     if osDevice == "Ubuntu":
                         # Copy configuration and tools in the paths specified
                         pathConfigurationUbuntu = os.path.join(os.getcwd(), "configurations/Ram_Dump/Ubuntu")
                         copy_configuration(pathConfigurationUbuntu, environment, pathSwitch, pathUSB)
-                        replace_pass_and_name(pathSwitch, password, nameUSB)
+                        replace_pass_and_name(pathSwitch, password, nameUSB, pathFiles, pathUSB)
                 elif action == "Other action":
                     print("TODO")
 
                 # Insert configuration in logs
-                self.logs_textbox.insert("0.0", "**********\n" + datetime.now().strftime('%H:%M:%S') + " --- Configuration loaded: \n- Path to Bash Bunny: "+pathBashBunny+"\n- Path to exfiltration key: "+pathUSB+"\n- Action: "+action+"\n- Switch: "+str(switch)+"\n- Environment: "+text_environment+"\n- OS: "+osDevice+"\n")
+                self.logs_textbox.insert("0.0", "**********\n" + datetime.now().strftime('%H:%M:%S') + " --- Configuration loaded: \n- Path to Bash Bunny: "+pathBashBunny+"\n- Path to exfiltration key: "+pathUSB+"\n- Action: "+action+"\n- Switch: "+str(switch)+"\n- Environment: "+text_environment+"\n- OS: "+osDevice+"\n- Path to files to save :"+pathFiles+"\n")
             except Exception as e:
                 # Insert error in logs
                 self.logs_textbox.insert("0.0", datetime.now().strftime('%H:%M:%S') + " - Error: "+str(e)+"\n")
@@ -123,7 +129,7 @@ class App(customtkinter.CTk):
 
         # Window configuration
         self.title("OffGrid_Configurator.py")
-        self.geometry(f"{690}x{760}")
+        self.geometry(f"{690}x{850}")
         self.resizable(False, False)
 
         # First frame : Path to Bash bunny
@@ -158,6 +164,10 @@ class App(customtkinter.CTk):
 
         self.adminPassword = customtkinter.CTkEntry(self.frame1_ram, placeholder_text="Enter admin password", show="\u25CF", width=300)
         self.adminPassword.grid(row=3, column=0, pady=(20,0), padx=(80,0))
+
+        self.pathFiles = customtkinter.CTkEntry(self.frame1_ram, placeholder_text="Path to root folder of files you want to save (optionnal)", width=420)
+        self.pathFiles.grid(row=4, column=0, padx=(30, 0), pady=(30, 30), sticky="nsew")
+
 
         # Second frame RAM Dump : Configuration for the Bash Bunny (switch / environment / OS)
         self.frame2_ram = customtkinter.CTkFrame(self.tabview.tab("RAM Dump"))

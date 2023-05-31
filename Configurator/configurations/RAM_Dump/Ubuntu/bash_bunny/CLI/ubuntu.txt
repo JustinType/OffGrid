@@ -18,3 +18,7 @@ ENTER
 Tanguy :
 [password]
 [nameUSB]
+REM PathFilesToSave1
+REM PathFilesToSave2
+REM PathFilesToSave3
+REM PathFilesToSave4
