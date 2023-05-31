@@ -53,7 +53,7 @@ class App(customtkinter.CTk):
             except Exception as e:
                 self.logs_textbox.insert("0.0", datetime.now().strftime('%H:%M:%S') + " - Error: "+str(e)+"\n")
 
-        def replace_pass_and_name(pathSwitch, password, nameUSB, pathFiles, pathUSB):
+        def replace_pass_and_name(pathSwitch, password, nameUSB, pathFiles, pathUSB, osDevice):
             try:
                 for filename in os.listdir(pathSwitch):
                     file_path = os.path.join(pathSwitch, filename)
@@ -68,7 +68,10 @@ class App(customtkinter.CTk):
                             line = line.replace("[nameUSB]", nameUSB)
                         if pathFiles != "" and "REM PathFilesToSave" in line:
                             line = line.replace("REM PathFilesToSave1", "DELAY 3000")
-                            line = line.replace("REM PathFilesToSave2", f"STRING cp -r {pathFiles} {pathUSB}/saved_files")
+                            if osDevice == "Windows":
+                                line = line.replace("REM PathFilesToSave2", f"STRING xcopy {pathFiles} {pathUSB}/saved_files\ /E/H")
+                            elif osDevice == "Debian" or osDevice == "Ubuntu":
+                                line = line.replace("REM PathFilesToSave2", f"STRING cp -r {pathFiles} {pathUSB}/saved_files")
                             line = line.replace("REM PathFilesToSave3", "DELAY 1000")
                             line = line.replace("REM PathFilesToSave4", "ENTER")
                         newFile.write(line)
@@ -105,17 +108,17 @@ class App(customtkinter.CTk):
                         # Copy configuration and tools in the paths specified
                         pathConfigurationWindows = os.path.join(os.getcwd(), "configurations/Ram_Dump/Windows")
                         copy_configuration(pathConfigurationWindows, environment, pathSwitch, pathUSB)
-                        replace_pass_and_name(pathSwitch, password, nameUSB, pathFiles, pathUSB)
+                        replace_pass_and_name(pathSwitch, password, nameUSB, pathFiles, pathUSB, osDevice)
                     if osDevice == "Debian":
                         # Copy configuration and tools in the paths specified
                         pathConfigurationDebian = os.path.join(os.getcwd(), "configurations/Ram_Dump/Debian")
                         copy_configuration(pathConfigurationDebian, environment, pathSwitch, pathUSB)
-                        replace_pass_and_name(pathSwitch, password, nameUSB, pathFiles, pathUSB)
+                        replace_pass_and_name(pathSwitch, password, nameUSB, pathFiles, pathUSB, osDevice)
                     if osDevice == "Ubuntu":
                         # Copy configuration and tools in the paths specified
                         pathConfigurationUbuntu = os.path.join(os.getcwd(), "configurations/Ram_Dump/Ubuntu")
                         copy_configuration(pathConfigurationUbuntu, environment, pathSwitch, pathUSB)
-                        replace_pass_and_name(pathSwitch, password, nameUSB, pathFiles, pathUSB)
+                        replace_pass_and_name(pathSwitch, password, nameUSB, pathFiles, pathUSB, osDevice)
                 elif action == "Other action":
                     print("TODO")
 
