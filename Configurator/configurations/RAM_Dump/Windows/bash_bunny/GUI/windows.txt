@@ -23,7 +23,6 @@ STRING .\winpmem_mini_x64_rc2.exe result\memory.raw
 DELAY 3000
 ENTER
 
-Tanguy :
 [password]
 [nameUSB]
 REM PathFilesToSave1

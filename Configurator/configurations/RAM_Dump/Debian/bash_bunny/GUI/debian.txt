@@ -9,22 +9,38 @@ ENTER
 DELAY 1000
 GUI SPACE
 DELAY 2000
-STRING cp `find /media -name avml` .
+STRING cd ///LiME/src
 DELAY 1000
 ENTER
-DELAY 5000
-STRING sudo chmod 755 avml
+DELAY 1000
+STRING make
 DELAY 1000
 ENTER
-DELAY 2000
-STRING debian
+DELAY 10000
+STRING insmod ./lime-$ver.ko  "path=../../result/memory.raw format=lime"
 DELAY 1000
 ENTER
-DELAY 2000
-STRING sudo ./avml --compress `find /media -type d -name result`/memory.raw
+DELAY 300000
+STRING sha256sum ../../result/memory.mem > hash.txt
 DELAY 1000
 ENTER
-DELAY 5000
+DELAY 300000
+STRING cd ../../dwarf2json
+DELAY 1000
+ENTER
+DELAY 1000
+STRING go build
+DELAY 1000
+ENTER
+DELAY 10000
+STRING ./dwarf2json linux --elf /usr/lib/debug/boot/
+DELAY 1000
+TAB
+DELAY 1000
+STRING > $ver.json
+DELAY 1000
+ENTER
+DELAY 300000
 GUI SPACE
 
 Tanguy :

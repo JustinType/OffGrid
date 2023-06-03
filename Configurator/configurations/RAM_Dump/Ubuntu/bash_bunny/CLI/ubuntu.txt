@@ -1,17 +1,60 @@
-DELAY 15000
-STRING cp `find /media -name avml` .
+STRING sudo mkdir /media/external
 DELAY 1000
 ENTER
-DELAY 5000
-STRING sudo chmod 755 avml
 DELAY 1000
-ENTER
-DELAY 2000
-STRING debian
+STRING [password]
 DELAY 1000
 ENTER
 DELAY 2000
-STRING sudo ./avml --compress `find /media -type d -name result`/memory.raw
+STRING usb=$(lsblk -lo name,label | grep [nameUSB] | cut -d " " -f 1)
+DELAY 1000
+ENTER
+DELAY 1000
+STRING ver=$(uname -r)
+DELAY 1000
+ENTER
+DELAY 1000
+STRING sudo mount /dev/$usb /media/external
+DELAY 1000
+ENTER
+DELAY 1000
+STRING cd /media/external/LiME/src
+DELAY 1000
+ENTER
+DELAY 1000
+STRING make
+DELAY 1000
+ENTER
+DELAY 10000
+STRING insmod ./lime-$ver.ko  "path=../../result/memory.raw format=lime"
+DELAY 1000
+ENTER
+DELAY 300000
+STRING sha256sum ../../result/memory.raw > hash.txt
+DELAY 1000
+ENTER
+DELAY 300000
+STRING cd ../../dwarf2json
+DELAY 1000
+ENTER
+DELAY 1000
+STRING go build
+DELAY 1000
+ENTER
+DELAY 10000
+STRING ./dwarf2json linux --elf /usr/lib/debug/boot/
+DELAY 1000
+TAB
+DELAY 1000
+STRING > ../result/$ver.json
+DELAY 1000
+ENTER
+DELAY 300000
+STRING cd
+DELAY 1000
+ENTER
+DELAY 1000
+STRING sudo umount /media/external
 DELAY 1000
 ENTER
 
