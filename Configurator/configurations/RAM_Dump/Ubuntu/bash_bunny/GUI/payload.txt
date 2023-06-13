@@ -8,7 +8,7 @@ LED ATTACK
 
 # Load script for ubuntu
 if [ -f "/root/udisk/payloads/${SWITCH_POSITION}/ubuntu.txt" ]; then 
-	QUACK ${SWITCH_POSITION}/linux/ubuntu.txt
+	QUACK ${SWITCH_POSITION}/ubuntu.txt
 	LED FINISH
 else
     	LED FAIL

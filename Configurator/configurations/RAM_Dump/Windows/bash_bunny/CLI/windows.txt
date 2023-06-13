@@ -1,15 +1,16 @@
-DELAY 15000
-STRING cd F:\WinPMem\
 DELAY 5000
-ENTER
-DELAY 3000
-STRING .\winpmem_mini_x64_rc2.exe result\memory.raw
-DELAY 3000
-ENTER
-
-[password]
-[nameUSB]
-REM PathFilesToSave1
 REM PathFilesToSave2
 REM PathFilesToSave3
 REM PathFilesToSave4
+REM PathFilesToSave5
+STRING cd D:\WinPMem\
+DELAY 5000
+ENTER
+DELAY 3000
+STRING .\winpmem_mini_x64_rc2.exe ..\result\memory.raw
+DELAY 1000
+ENTER
+DELAY 200000
+STRING Get-FileHash ..\result\memory.raw > ..\result\memory.sha256
+DELAY 1000
+ENTER

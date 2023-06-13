@@ -3,25 +3,33 @@ GUI SPACE
 DELAY 1000
 ALT F2
 DELAY 1000
-STRING gnome-terminal
+STRING terminal
 DELAY 1000
 ENTER
 DELAY 1000
 GUI SPACE
 DELAY 2000
-STRING cd ///LiME/src
+STRING ver=$(uname -r)
 DELAY 1000
 ENTER
 DELAY 1000
-STRING make
+STRING cd media/$USER/[nameUSB]/LiME/src
+DELAY 1000
+ENTER
+DELAY 1000
+STRING sudo make
+DELAY 1000
+ENTER
+DELAY 1000
+STRING [password]
 DELAY 1000
 ENTER
 DELAY 10000
-STRING insmod ./lime-$ver.ko  "path=../../result/memory.raw format=lime"
+STRING sudo insmod ./lime-$ver.ko  "path=../../result/memory.raw format=lime"
 DELAY 1000
 ENTER
 DELAY 300000
-STRING sha256sum ../../result/memory.mem > hash.txt
+STRING sha256sum ../../result/memory.mem > ../../result/memory.sha256
 DELAY 1000
 ENTER
 DELAY 300000
@@ -33,20 +41,12 @@ STRING go build
 DELAY 1000
 ENTER
 DELAY 10000
-STRING ./dwarf2json linux --elf /usr/lib/debug/boot/
-DELAY 1000
-TAB
-DELAY 1000
-STRING > $ver.json
+STRING sudo ./dwarf2json linux --elf /usr/lib/debug/boot/vmlinux-$ver > ../result/memory.json
 DELAY 1000
 ENTER
 DELAY 300000
-GUI SPACE
-
-Tanguy :
-[password]
-[nameUSB]
-REM PathFilesToSave1
 REM PathFilesToSave2
 REM PathFilesToSave3
 REM PathFilesToSave4
+REM PathFilesToSave5
+GUI SPACE

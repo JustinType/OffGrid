@@ -1,32 +1,27 @@
-DELAY 15000
+DELAY 1000
 GUI r
-DELAY 3000
-STRING pozershell
-DELAY 3000
+DELAY 1000
+STRING cmd
+DELAY 1000
 CTRL-SHIFT ENTER
-DELAY 5000
-TAB
-DELAY 2000
-TAB
-DELAY 2000
+DELAY 10000
+STRING powershell start-process powershell -verb runas
+DELAY 1000
 ENTER
-DELAY 8000
-STRING Set6ZinUserLqnguqgeList 6Force en6US
-DELAY 3000
+DELAY 10000
+STRING cd D:\
+DELAY 1000
 ENTER
-DELAY 3000
-STRING cd F:\WinPMem\
-DELAY 5000
-ENTER
-DELAY 3000
-STRING .\winpmem_mini_x64_rc2.exe result\memory.raw
-DELAY 3000
-ENTER
-
-[password]
-[nameUSB]
 REM PathFilesToSave1
 REM PathFilesToSave2
 REM PathFilesToSave3
 REM PathFilesToSave4
+REM PathFilesToSave5
+STRING .\winpmem_mini_x64_rc2.exe result\memory.raw
+DELAY 1000
+ENTER
+DELAY 200000
+STRING Get-FileHash result\memory.raw > memory.sha256
+DELAY 1000
+ENTER
 

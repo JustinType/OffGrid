@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: apt-offline
+Version: 1.8.5
+Summary: Offline APT Package Manager
+Home-page: https://github.com/rickysarraf/apt-offline
+Author: Ritesh Raj Sarraf
+Author-email: rrs@researchut.com
+License: GPL
+Platform: Posix; MacOS X; Windows
+Classifier: Development Status :: 3 - Testing/Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: End Users
+Classifier: License :: OSI Approved :: GPL
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Topic :: Package Management
+License-File: LICENSE
+
+apt-offline is an Offline APT Package Manager
+for Debian and derivatives

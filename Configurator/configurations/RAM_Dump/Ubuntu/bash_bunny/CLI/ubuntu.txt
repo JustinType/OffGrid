@@ -17,7 +17,11 @@ DELAY 1000
 STRING sudo mount /dev/$usb /media/external
 DELAY 1000
 ENTER
-DELAY 1000
+REM PathFilesToSave1
+REM PathFilesToSave2
+REM PathFilesToSave3
+REM PathFilesToSave4
+REM PathFilesToSave5
 STRING cd /media/external/LiME/src
 DELAY 1000
 ENTER
@@ -30,7 +34,7 @@ STRING insmod ./lime-$ver.ko  "path=../../result/memory.raw format=lime"
 DELAY 1000
 ENTER
 DELAY 300000
-STRING sha256sum ../../result/memory.raw > hash.txt
+STRING sha256sum ../../result/memory.raw > memory.sha256
 DELAY 1000
 ENTER
 DELAY 300000
@@ -46,7 +50,7 @@ STRING ./dwarf2json linux --elf /usr/lib/debug/boot/
 DELAY 1000
 TAB
 DELAY 1000
-STRING > ../result/$ver.json
+STRING > ../result/memory.json
 DELAY 1000
 ENTER
 DELAY 300000
@@ -57,11 +61,3 @@ DELAY 1000
 STRING sudo umount /media/external
 DELAY 1000
 ENTER
-
-Tanguy :
-[password]
-[nameUSB]
-REM PathFilesToSave1
-REM PathFilesToSave2
-REM PathFilesToSave3
-REM PathFilesToSave4

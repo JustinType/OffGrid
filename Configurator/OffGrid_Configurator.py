@@ -53,7 +53,7 @@ class App(customtkinter.CTk):
             except Exception as e:
                 self.logs_textbox.insert("0.0", datetime.now().strftime('%H:%M:%S') + " - Error: "+str(e)+"\n")
 
-        def replace_pass_and_name(pathSwitch, password, nameUSB, pathFiles, pathUSB, osDevice):
+        def replace_pass_and_name(pathSwitch, password, nameUSB, pathFiles, osDevice):
             try:
                 for filename in os.listdir(pathSwitch):
                     file_path = os.path.join(pathSwitch, filename)
@@ -67,13 +67,18 @@ class App(customtkinter.CTk):
                         if "[nameUSB]" in line:
                             line = line.replace("[nameUSB]", nameUSB)
                         if pathFiles != "" and "REM PathFilesToSave" in line:
-                            line = line.replace("REM PathFilesToSave1", "DELAY 3000")
+                            line = line.replace("REM PathFilesToSave1", "DELAY 1000")
                             if osDevice == "Windows":
-                                line = line.replace("REM PathFilesToSave2", f"STRING xcopy {pathFiles} {pathUSB}/saved_files\ /E/H")
+                                line = line.replace("REM PathFilesToSave2", f"STRING xcopy {pathFiles} result\saved_files\ /E/H")
                             elif osDevice == "Debian" or osDevice == "Ubuntu":
-                                line = line.replace("REM PathFilesToSave2", f"STRING cp -r {pathFiles} {pathUSB}/saved_files")
+                                line = line.replace("REM PathFilesToSave2", f"STRING sudo cp -r {pathFiles} /media/$USER/{nameUSB}/result/saved_files")
+                                line = line.replace("REM PathFilesToSave6", "DELAY 1000")
+                                line = line.replace("REM PathFilesToSave7", "ENTER")
+                                line = line.replace("REM PathFilesToSave8", "DELAY 1000")
+                                line = line.replace("REM PathFilesToSave9", "STRING " + password)
                             line = line.replace("REM PathFilesToSave3", "DELAY 1000")
                             line = line.replace("REM PathFilesToSave4", "ENTER")
+                            line = line.replace("REM PathFilesToSave5", "DELAY 10000")
                         newFile.write(line)
                     newFile.close()           
             except Exception as e:
@@ -108,17 +113,17 @@ class App(customtkinter.CTk):
                         # Copy configuration and tools in the paths specified
                         pathConfigurationWindows = os.path.join(os.getcwd(), "configurations/Ram_Dump/Windows")
                         copy_configuration(pathConfigurationWindows, environment, pathSwitch, pathUSB)
-                        replace_pass_and_name(pathSwitch, password, nameUSB, pathFiles, pathUSB, osDevice)
+                        replace_pass_and_name(pathSwitch, password, nameUSB, pathFiles, osDevice)
                     if osDevice == "Debian":
                         # Copy configuration and tools in the paths specified
                         pathConfigurationDebian = os.path.join(os.getcwd(), "configurations/Ram_Dump/Debian")
                         copy_configuration(pathConfigurationDebian, environment, pathSwitch, pathUSB)
-                        replace_pass_and_name(pathSwitch, password, nameUSB, pathFiles, pathUSB, osDevice)
+                        replace_pass_and_name(pathSwitch, password, nameUSB, pathFiles, osDevice)
                     if osDevice == "Ubuntu":
                         # Copy configuration and tools in the paths specified
                         pathConfigurationUbuntu = os.path.join(os.getcwd(), "configurations/Ram_Dump/Ubuntu")
                         copy_configuration(pathConfigurationUbuntu, environment, pathSwitch, pathUSB)
-                        replace_pass_and_name(pathSwitch, password, nameUSB, pathFiles, pathUSB, osDevice)
+                        replace_pass_and_name(pathSwitch, password, nameUSB, pathFiles, osDevice)
                 elif action == "Other action":
                     print("TODO")
 

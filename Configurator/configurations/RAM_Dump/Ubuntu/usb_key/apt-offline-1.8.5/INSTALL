@@ -1,0 +1,24 @@
+##  Under Linux
+
+# Pre-requisites
+Please refer to requirements.txt for dependencies that need to be pre-installed for apt-offline. Note: If using a package from your distribution, manual installation of dependencies should not be required
+
+# To build
+make build
+
+# To Install (You might need to be root)
+make install
+
+## Under Microsoft Windows
+
+# Execute the file using the Python interpreter
+# Assuming python.exe is in your path
+
+#TODO: Find a windows native way to update/generate the Ui files
+# The equivalent of genui.sh
+
+# To build
+C:\> python3 setup.py build
+
+# To install
+C:\> python3 setup.py install

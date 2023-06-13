@@ -1,11 +1,31 @@
-DELAY 10000
+DELAY 1000
 ALT F2
 DELAY 1000
-STRING terminal
+STRING gnome-terminal
 DELAY 1000
 ENTER
 DELAY 1000
-STRING cd ///LiME/src
+STRING name=$(uname -r)
+DELAY 1000
+ENTER
+DELAY 1000
+STRING cd /media/$USER/[nameUSB]/apt-offline-1.8.5
+DELAY 1000
+ENTER
+DELAY 1000
+STRING sudo ./apt-offline install bundle.zip
+DELAY 1000
+ENTER
+DELAY 1000
+STRING [password]
+DELAY 1000
+ENTER
+DELAY 30000
+STRING sudo apt-get install build-essential linux-headers-$name linux-image-$name-dbg zip golang
+DELAY 30000
+ENTER
+DELAY 1000
+STRING cd ../LiME/src
 DELAY 1000
 ENTER
 DELAY 1000
@@ -13,15 +33,15 @@ STRING make
 DELAY 1000
 ENTER
 DELAY 10000
-STRING insmod ./lime-$ver.ko  "path=../../result/memory.raw format=lime"
+STRING sudo insmod lime-$name.ko "path=../../result/memory.raw format=lime"
 DELAY 1000
 ENTER
 DELAY 300000
-STRING sha256sum ../../result/memory.mem > hash.txt
+STRING sha256sum ../../result/memory.raw > memory.sha256
 DELAY 1000
 ENTER
-DELAY 300000
-STRING cd ../../dwarf2json
+DELAY 200000
+STRING cd ../../dwarf2json/
 DELAY 1000
 ENTER
 DELAY 1000
@@ -29,19 +49,11 @@ STRING go build
 DELAY 1000
 ENTER
 DELAY 10000
-STRING ./dwarf2json linux --elf /usr/lib/debug/boot/
-DELAY 1000
-TAB
-DELAY 1000
-STRING > $ver.json
+STRING ./dwarf2json linux --elf /usr/lib/debug/boot/vmlinux-$name > ../result/memory.json
 DELAY 1000
 ENTER
-
-
-Tanguy :
-[password]
-[nameUSB]
-REM PathFilesToSave1
+DELAY 20000
 REM PathFilesToSave2
 REM PathFilesToSave3
 REM PathFilesToSave4
+REM PathFilesToSave5
