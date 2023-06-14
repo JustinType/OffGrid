@@ -21,7 +21,7 @@ REM PathFilesToSave1
 REM PathFilesToSave2
 REM PathFilesToSave3
 REM PathFilesToSave4
-REM PathFilesToSave5
+DELAY 1000
 STRING cd /media/external/LiME/src
 DELAY 1000
 ENTER
