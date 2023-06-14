@@ -34,7 +34,7 @@ STRING insmod ./lime-$ver.ko  "path=../../result/memory.raw format=lime"
 DELAY 1000
 ENTER
 DELAY 300000
-STRING sha256sum ../../result/memory.raw > memory.sha256
+STRING sha256sum ../../result/memory.raw > ../../result/memory.sha256
 DELAY 1000
 ENTER
 DELAY 300000
