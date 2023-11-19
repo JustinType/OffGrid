@@ -1,0 +1,130 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+{% block content%}
+<style>
+  .form-control,
+  .form-select {
+    color: var(--bs-gray-100);
+    background: var(--bs-primary-rgb);
+  }
+
+  .card,
+  .card-header {
+    background: rgba(0, 0, 0, 0.25);
+    border-style: none;
+  }
+
+  .title-input {
+    max-width: 500px;
+  }
+
+</style>
+<div class="container" id="peripherals" data-url="{% url 'peripherals' %}">
+    <div class="row" style="margin-bottom: 20px;">
+        <div class="col align-items-center no-gutters d-flex justify-content-between" style="margin-top: 10px;">
+            <h4 style="color: var(--bs-white);"><i class="fa-brands fa-usb"></i>&nbsp;Register peripheral</h4>
+        </div>
+    </div>
+    <div class="row mb-3">
+        {% if form.errors %}
+            <div class="alert alert-danger" role="alert">
+                <strong>Oops!</strong> Something went wrong.
+                <ul>
+                    {% for field in form %}
+                        {{ field.label }}
+                        {% for error in field.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+        <form method="POST">
+          {% csrf_token %}
+          <div class="card border-sm shadow mb-3" style="background: rgba(0,0,0,0.25);border-style: none;">
+            <div class="card-header py-3">
+              <p class="m-0 fw-bold">Fill in the required fields *</p>
+            </div>
+            <div class="card-body">
+              <div class="row mb-3">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="form-label" for="{{ form.name.id_for_label }}"><strong>{{ form.name.label }} *</strong></label>
+                    {{ form.name }}
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="form-label" for="{{ form.description.id_for_label }}"><strong>{{ form.description.label }} *</strong></label>
+                    {{ form.description }}
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="form-label" for="{{ form.os_version.id_for_label }}"><strong>{{ form.os_version.label }} *</strong></label>
+                    {{ form.os_version }}
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="form-label" for="{{ form.source_system.id_for_label }}"><strong>{{ form.source_system.label }} *</strong></label>
+                    {{ form.source_system }}
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-12">
+                  <fieldset class="form-group">
+                    <div><strong>{{ form.bash_bunny_device.label }} *</strong></div>
+                      <div class="form-control">
+                        {% for choice in form.bash_bunny_device %}
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="{{ form.bash_bunny_device.name }}" id="{{ choice.id_for_label }}" value="{{ choice.choice_label }}">
+                            <label class="form-check-label" for="{{ choice.id_for_label }}">{{ choice.choice_label }}</label>
+                          </div>
+                        {% endfor %}
+                      </div>
+                  </fieldset>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-12">
+                  <fieldset class="form-group">
+                    <div><strong>{{ form.storage_device.label }} *</strong></div>
+                      <div class="form-control">
+                        {% for choice in form.storage_device %}
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="{{ form.storage_device.name }}" id="{{ choice.id_for_label }}" value="{{ choice.choice_label }}">
+                            <label class="form-check-label" for="{{ choice.id_for_label }}">{{ choice.choice_label }}</label>
+                          </div>
+                        {% endfor %}
+                      </div>
+                  </fieldset>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </div>
+        </form>
+
+
+    </div>
+</div>
+
+
+<form style="all: unset;" id='actionform' method="GET">
+</form>
+
+<form method="POST">
+    {% csrf_token %}
+</form>
+<div class="overlay"></div>
+
+{% endblock content %}

@@ -1,0 +1,14 @@
+a[aria-disabled="true"] {
+    pointer-events: none;
+    opacity: 0.5;
+    /* Ajoutez ici les autres styles pour l'apparence désactivée */
+}
+
+/* righteous-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Righteous';
+  font-style: normal;
+  font-weight: 400;
+  src: url("{% static '/font/righteous-v14-latin-regular.woff2' %}") format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}

@@ -1,0 +1,12 @@
+../docker/nginx/log/
+*.pem
+db.sqlite3
+investigations/.DS_Store
+.DS_Store
+
+*.json
+*.mem
+*.sha256
+
+/venv/
+/idea/

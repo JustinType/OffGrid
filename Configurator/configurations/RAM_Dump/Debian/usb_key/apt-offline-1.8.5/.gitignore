@@ -1,4 +1,0 @@
-*.pyc
-.settings/
-/apt_offline_gui/Ui_*.py
-/apt_offline_gui/resources_rc.py

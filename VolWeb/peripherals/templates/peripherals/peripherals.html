@@ -1,0 +1,68 @@
+<!---
+Filename : investigations.html
+Analysis type : Windows & Linux
+Description :
+Display all the investigations and their analysis status.
+The content is refreshed every 60 seconds using the "refresh()" function.
+When an investigation is clicked, the sidebar is showed with the appropriate actions based on the status.
+--->
+{% extends "dashboard/base.html" %} {% load static %} {% block content%}
+<div class="container" id="peripherals" data-url="{% url 'peripherals' %}">
+    <div class="row" style="margin-bottom: 20px;">
+        <div class="col align-items-center no-gutters d-flex justify-content-between" style="margin-top: 10px;">
+            <h4 style="color: var(--bs-white);"><i class="fa-brands fa-usb"></i>&nbsp;Peripherals</h4>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col align-items-center no-gutters d-flex justify-content-between">
+            <div class="col-1 invest-table-header"><span class="invest-header">&nbsp;Name</span></div>
+            <div class="col-4 invest-table-header"><span class="invest-header">&nbsp;ID storage</span></div>
+            <div class="col-4 invest-table-header"><span class="invest-header">&nbsp;ID Bash Bunny</span></div>
+            <div class="col-1 invest-table-header"><span class="invest-header">&nbsp;Investigate</span></div>
+            <div class="col-1 invest-table-header"><span class="invest-header">&nbsp;Manage</span></div>
+        </div>
+    </div>
+    {% if peripherals_dict %}
+    <div id="all-storage-devices" data-url="{% url 'get_invest' %}">
+        {% for peripheral_dict in peripherals_dict.values %}
+        <div class="row">
+            <div class="col-12 align-items-center no-gutters d-flex justify-content-between">
+                <div class="invest-cell col-1 text-truncate">
+                    <span class="invest-header">{{ peripheral_dict.peripheral.name }}</span>
+                </div>
+                <div class="invest-cell col-4 text-truncate">
+                    <span class="invest-header">{{ peripheral_dict.peripheral.storage_device }}</span>
+                </div>
+                <div class="invest-cell col-4 text-truncate">
+                    <span class="invest-header">{{ peripheral_dict.peripheral.bash_bunny_device }}</span>
+                </div>
+                <div class="col-1 d-flex align-items-center justify-content-center">
+                    <a href="{% url 'auto-investigate' storage_device_serial_id=peripheral_dict.peripheral.storage_device %}"
+                       class="btn btn-primary btn-sm"
+                       type="button" {% if not peripheral_dict.available %} aria-disabled="true" {% endif %}>
+                        &nbsp;Investigate
+                    </a>
+                </div>
+                <div class="col-1 d-flex align-items-center justify-content-center">
+                    <a href=""
+                       class="btn btn-secondary btn-sm"
+                       type="button" {% if not peripheral_dict.available %} aria-disabled="true" {% endif %}>
+                        &nbsp;Manage
+                    </a>
+                </div>
+            </div>
+        </div>
+{% endfor %}
+    </div>
+    {% endif %}
+</div>
+
+<form style="all: unset;" id='actionform' method="GET">
+</form>
+
+<form method="POST">
+    {% csrf_token %}
+</form>
+<div class="overlay"></div>
+
+{% endblock content %}

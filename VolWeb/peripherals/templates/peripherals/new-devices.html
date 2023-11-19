@@ -1,0 +1,98 @@
+<!---
+Filename : investigations.html
+Analysis type : Windows & Linux
+Description :
+Display all the investigations and their analysis status.
+The content is refreshed every 60 seconds using the "refresh()" function.
+When an investigation is clicked, the sidebar is showed with the appropriate actions based on the status.
+--->
+{% extends "dashboard/base.html" %} {% load static %} {% block content%}
+<div class="container mb-3" id="storage-devices" data-url="{% url 'new-devices' %}">
+    <div class="row" style="margin-bottom: 20px;">
+        <div class="col align-items-center no-gutters d-flex justify-content-between" style="margin-top: 10px;">
+            <h4 style="color: var(--bs-white);"><i class="fa-brands fa-usb"></i>&nbsp;Storage devices</h4>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col align-items-center no-gutters d-flex justify-content-between">
+            <div class="col-3 invest-table-header"><span class="invest-header">&nbsp;Vendor</span></div>
+            <div class="col-6 invest-table-header"><span class="invest-header">&nbsp;ID</span></div>
+            <div class="col-1 invest-table-header"><span class="invest-header">&nbsp;Mount status</span></div>
+            <div class="col-1 invest-table-header"><span class="invest-header">&nbsp;Action</span></div>
+        </div>
+    </div>
+    {% if storage_devices %}
+    <div id="all-storage-devices" data-url="{% url 'get_invest' %}">
+        {% for storage_device in storage_devices.values %}
+        <div class="row">
+            <div class="col-12 align-items-center no-gutters d-flex justify-content-between">
+                <div class="invest-cell col-3 text-truncate">
+                    <span class="invest-header">{{ storage_device.vendor }}</span>
+                </div>
+                <div class="invest-cell col-6 text-truncate">
+                    <span class="invest-header">{{ storage_device.serial_id }}</span>
+                </div>
+                <div class="invest-cell col-1">
+                    <span class="invest-header">{{ storage_device.mounted }}</span>
+                </div>
+                <div class="col-1 d-flex align-items-center justify-content-center">
+                    <a href="{% url 'register-peripheral' %}" class="btn btn-primary btn-sm" type="button">
+                        &nbsp;Register
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+
+<div class="container" id="bash-bunny-devices" data-url="{% url 'new-devices' %}">
+    <div class="row" style="margin-bottom: 20px;">
+        <div class="col align-items-center no-gutters d-flex justify-content-between" style="margin-top: 10px;">
+            <h4 style="color: var(--bs-white);"><i class="fa-brands fa-usb"></i>&nbsp;Bash Bunny devices</h4>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col align-items-center no-gutters d-flex justify-content-between">
+            <div class="col-3 invest-table-header"><span class="invest-header">&nbsp;Vendor</span></div>
+            <div class="col-6 invest-table-header"><span class="invest-header">&nbsp;ID</span></div>
+            <div class="col-1 invest-table-header"><span class="invest-header">&nbsp;Mount status</span></div>
+            <div class="col-1 invest-table-header"><span class="invest-header">&nbsp;Action</span></div>
+        </div>
+    </div>
+    {% if bash_bunny_devices %}
+    <div id="all-bash-bunny-devices" data-url="{% url 'get_invest' %}">
+        {% for bash_bunny_device in bash_bunny_devices.values %}
+        <div class="row">
+            <div class="col-12 align-items-center no-gutters d-flex justify-content-between">
+                <div class="invest-cell col-3 text-truncate">
+                    <span class="invest-header">{{ bash_bunny_device.vendor }}</span>
+                </div>
+                <div class="invest-cell col-6 text-truncate">
+                    <span class="invest-header">{{ bash_bunny_device.serial_id }}</span>
+                </div>
+                <div class="invest-cell col-1">
+                    <span class="invest-header">{{ bash_bunny_device.mounted }}</span>
+                </div>
+                <div class="col-1 d-flex align-items-center justify-content-center">
+                    <a href="{% url 'register-peripheral' %}" class="btn btn-primary btn-sm" type="button">
+                        &nbsp;Register
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+
+<form style="all: unset;" id='actionform' method="GET">
+</form>
+
+<form method="POST">
+    {% csrf_token %}
+</form>
+<div class="overlay"></div>
+
+{% endblock content %}

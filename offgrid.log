@@ -1,0 +1,84 @@
+2023-06-03 17:21:58,891 - INFO - Service de gestion des périphériques USB démarré.
+2023-06-03 17:24:36,980 - INFO - Fichier XML ./docker/shared-folder/xml/available_devices.xml réinitialisé.
+2023-06-03 17:24:36,980 - INFO - Fichier XML ./docker/shared-folder/xml/device_requests.xml réinitialisé.
+2023-06-03 17:24:37,024 - INFO - Service de gestion des périphériques USB démarré.
+2023-06-03 17:26:02,429 - INFO - Fichier XML ./docker/shared-folder/xml/available_devices.xml réinitialisé.
+2023-06-03 17:26:02,429 - INFO - Fichier XML ./docker/shared-folder/xml/device_requests.xml réinitialisé.
+2023-06-03 17:26:02,472 - INFO - Service de gestion des périphériques USB démarré.
+2023-06-03 17:29:04,896 - INFO - Fichier XML ./docker/shared-folder/xml/available_devices.xml réinitialisé.
+2023-06-03 17:29:04,897 - INFO - Fichier XML ./docker/shared-folder/xml/device_requests.xml réinitialisé.
+2023-06-03 17:29:04,939 - INFO - Service de gestion des périphériques USB démarré.
+2023-06-03 17:30:08,614 - INFO - Fichier XML ./docker/shared-folder/xml/available_devices.xml réinitialisé.
+2023-06-03 17:30:08,615 - INFO - Fichier XML ./docker/shared-folder/xml/device_requests.xml réinitialisé.
+2023-06-03 17:30:08,662 - INFO - Service de gestion des périphériques USB démarré.
+2023-06-03 17:30:47,307 - INFO - Fichier XML ./docker/shared-folder/xml/available_devices.xml réinitialisé.
+2023-06-03 17:30:47,307 - INFO - Fichier XML ./docker/shared-folder/xml/device_requests.xml réinitialisé.
+2023-06-03 17:30:47,350 - INFO - Service de gestion des périphériques USB démarré.
+2023-06-03 17:30:58,075 - WARNING - Un périphérique a été retiré, mais il n'était pas dans la liste des périphériques disponibles.
+2023-06-03 17:30:58,076 - INFO - Un périphérique a été retiré.
+2023-06-03 17:31:01,516 - WARNING - Un périphérique a été retiré, mais il n'était pas dans la liste des périphériques disponibles.
+2023-06-03 17:31:01,516 - INFO - Un périphérique a été retiré.
+2023-06-03 17:31:03,192 - INFO - Un périphérique a été ajouté.
+2023-06-03 17:31:16,970 - INFO - Un périphérique a été ajouté.
+2023-06-03 17:40:14,000 - INFO - Fichier XML ./docker/shared-folder/xml/available_devices.xml réinitialisé.
+2023-06-03 17:40:14,000 - INFO - Fichier XML ./docker/shared-folder/xml/device_requests.xml réinitialisé.
+2023-06-03 17:40:14,042 - INFO - Service de gestion des périphériques USB démarré.
+2023-06-03 17:43:35,097 - INFO - Fichier XML ./docker/shared-folder/xml/available_devices.xml réinitialisé.
+2023-06-03 17:43:35,097 - INFO - Fichier XML ./docker/shared-folder/xml/device_requests.xml réinitialisé.
+2023-06-03 17:43:35,152 - INFO - Service de gestion des périphériques USB démarré.
+2023-06-03 17:48:35,821 - INFO - Fichier XML ./docker/shared-folder/xml/available_devices.xml réinitialisé.
+2023-06-03 17:48:35,822 - INFO - Fichier XML ./docker/shared-folder/xml/device_requests.xml réinitialisé.
+2023-06-03 17:48:35,863 - INFO - Service de gestion des périphériques USB démarré.
+2023-06-03 17:50:08,284 - INFO - Fichier XML ./docker/shared-folder/xml/available_devices.xml réinitialisé.
+2023-06-03 17:50:08,285 - INFO - Fichier XML ./docker/shared-folder/xml/device_requests.xml réinitialisé.
+2023-06-03 17:50:08,327 - INFO - Service de gestion des périphériques USB démarré.
+2023-06-03 17:51:54,207 - INFO - Fichier XML ./docker/shared-folder/xml/available_devices.xml réinitialisé.
+2023-06-03 17:51:54,207 - INFO - Fichier XML ./docker/shared-folder/xml/device_requests.xml réinitialisé.
+2023-06-03 17:51:54,253 - INFO - Service de gestion des périphériques USB démarré.
+2023-06-03 17:53:27,586 - INFO - Fichier XML ./docker/shared-folder/xml/available_devices.xml réinitialisé.
+2023-06-03 17:53:27,586 - INFO - Fichier XML ./docker/shared-folder/xml/device_requests.xml réinitialisé.
+2023-06-03 17:53:27,628 - INFO - Service de gestion des périphériques USB démarré.
+2023-06-03 17:53:44,162 - INFO - La stack a été arrêtée. Arrêt du service de gestion des périphériques USB.
+2023-06-03 17:53:44,163 - INFO - Fichier XML ./docker/shared-folder/xml/available_devices.xml réinitialisé.
+2023-06-03 17:53:44,163 - INFO - Fichier XML ./docker/shared-folder/xml/device_requests.xml réinitialisé.
+2023-06-03 17:57:22,427 - INFO - Fichier XML ./docker/shared-folder/xml/available_devices.xml réinitialisé.
+2023-06-03 17:57:22,427 - INFO - Fichier XML ./docker/shared-folder/xml/device_requests.xml réinitialisé.
+2023-06-03 17:57:22,478 - INFO - Service de gestion des périphériques USB démarré.
+2023-06-03 17:57:54,095 - INFO - Arrêt de la stack volweb... (délai maximum : 60 secondes)
+2023-06-03 17:57:55,116 - INFO - La stack a été arrêtée. Arrêt du service de gestion des périphériques USB.
+2023-06-03 17:57:55,119 - INFO - Fichier XML ./docker/shared-folder/xml/available_devices.xml réinitialisé.
+2023-06-03 17:57:55,120 - INFO - Fichier XML ./docker/shared-folder/xml/device_requests.xml réinitialisé.
+2023-06-03 17:58:11,070 - INFO - Fichier XML ./docker/shared-folder/xml/available_devices.xml réinitialisé.
+2023-06-03 17:58:11,070 - INFO - Fichier XML ./docker/shared-folder/xml/device_requests.xml réinitialisé.
+2023-06-03 17:58:11,085 - INFO - Démarrage de la stack volweb... (délai maximum : 60 secondes)
+2023-06-03 17:58:13,567 - INFO - Service de gestion des périphériques USB démarré.
+2023-06-03 17:59:56,866 - INFO - Arrêt de la stack volweb... (délai maximum : 60 secondes)
+2023-06-03 17:59:57,900 - INFO - La stack a été arrêtée. Arrêt du service de gestion des périphériques USB.
+2023-06-03 17:59:57,901 - INFO - Fichier XML ./docker/shared-folder/xml/available_devices.xml réinitialisé.
+2023-06-03 17:59:57,901 - INFO - Fichier XML ./docker/shared-folder/xml/device_requests.xml réinitialisé.
+2023-06-03 18:00:01,272 - INFO - Fichier XML ./docker/shared-folder/xml/available_devices.xml réinitialisé.
+2023-06-03 18:00:01,272 - INFO - Fichier XML ./docker/shared-folder/xml/device_requests.xml réinitialisé.
+2023-06-03 18:00:01,287 - INFO - Démarrage de la stack volweb... (délai maximum : 60 secondes)
+2023-06-03 18:00:03,421 - INFO - Service de gestion des périphériques USB démarré.
+2023-06-03 18:00:09,368 - INFO - Arrêt de la stack volweb... (délai maximum : 60 secondes)
+2023-06-03 18:00:10,056 - INFO - La stack a été arrêtée. Arrêt du service de gestion des périphériques USB.
+2023-06-03 18:00:10,057 - INFO - Fichier XML ./docker/shared-folder/xml/available_devices.xml réinitialisé.
+2023-06-03 18:00:10,057 - INFO - Fichier XML ./docker/shared-folder/xml/device_requests.xml réinitialisé.
+2023-06-03 20:14:26,809 - INFO - Fichier XML ./docker/shared-folder/xml/available_devices.xml réinitialisé.
+2023-06-03 20:14:26,809 - INFO - Fichier XML ./docker/shared-folder/xml/device_requests.xml réinitialisé.
+2023-06-03 20:14:26,824 - INFO - Démarrage de la stack volweb... (délai maximum : 60 secondes)
+2023-06-03 20:14:30,401 - INFO - Service de gestion des périphériques USB démarré.
+2023-06-03 20:14:43,415 - WARNING - Un périphérique a été retiré, mais il n'était pas dans la liste des périphériques disponibles.
+2023-06-03 20:14:43,416 - INFO - Un périphérique a été retiré.
+2023-06-03 20:14:46,193 - WARNING - Un périphérique a été retiré, mais il n'était pas dans la liste des périphériques disponibles.
+2023-06-03 20:14:46,193 - INFO - Un périphérique a été retiré.
+2023-06-03 20:14:48,522 - INFO - Un périphérique a été ajouté.
+2023-06-03 20:15:01,828 - INFO - Un périphérique a été ajouté.
+2023-06-03 20:15:42,412 - INFO - Périphérique /dev/sda1 monté avec succès.
+2023-06-03 20:15:42,412 - INFO - Copie des fichiers du périphérique /dev/sda1 vers le serveur : django:/home/app/web/temp/8fb6445f-fe3e-4090-80e2-217d4cb1d9ed
+2023-06-03 20:15:44,031 - INFO - Copie des fichiers du périphérique /dev/sda1 vers le serveur terminée.
+2023-06-03 20:15:55,419 - INFO - Périphérique /dev/sda1 démonté avec succès.
+2023-06-03 20:21:47,568 - INFO - Arrêt de la stack volweb... (délai maximum : 60 secondes)
+2023-06-03 20:21:48,014 - INFO - La stack a été arrêtée. Arrêt du service de gestion des périphériques USB.
+2023-06-03 20:21:48,015 - INFO - Fichier XML ./docker/shared-folder/xml/available_devices.xml réinitialisé.
+2023-06-03 20:21:48,016 - INFO - Fichier XML ./docker/shared-folder/xml/device_requests.xml réinitialisé.
